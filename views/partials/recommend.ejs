@@ -1,0 +1,108 @@
+<style>
+    .cart-dropdown {
+        position: absolute;
+        width: 240px;
+        height: 440px;
+        display: none;
+        background-color: white;
+        border: 1px solid black;
+        top: 90px;
+        right: 40px;
+        padding: 20px;
+        z-index: 5;
+    }
+
+    .cart-dropdown.show {
+        display: block;              
+    }
+
+    .navigation-items #navrecommend.show{
+        background-image: url('../images/654.png') !important;
+    }
+
+    .cart-dropdown .cart-items {
+        height: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        overflow: auto;
+    }
+
+    .cart-dropdown .cart-items .cart-item {
+        width: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        height: 60px;
+        margin-bottom: 15px;
+    }
+
+    .cart-dropdown .cart-items .cart-item img {
+        width: 30%;
+    }
+
+    .cart-dropdown .cart-items .cart-item .item-details {
+        width: 70%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+        align-items: flex-start;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        padding: 10px 20px;
+    }
+
+    .cart-dropdown .cart-items .cart-item .item-details .name {
+        font-size: 0.6rem;
+        margin-bottom: 5px;
+    }
+
+    .cart-dropdown .cart-items .cart-item .item-details .price {
+        font-size: 0.6rem;
+    }
+
+    .cart-dropdown .cart-items .total {
+        font-size: 1rem;
+        text-align: center;
+        padding-bottom: 10px;
+    }
+
+    .cart-dropdown .custom-button {
+        width: 100%;
+        height: 40px;
+        background-color: #000;
+        color: white;
+        margin: 20px auto;
+    }
+
+    .cart-dropdown .custom-button:hover {
+        background-color: lightgrey;
+        color: black;
+    }
+</style>
+
+<div class="cart-dropdown">
+    <div class="cart-items">
+        <% for(let i=0;i<cartdata.length;i++){ %>
+        <div class="cart-item">
+            <img src="<%= cartdata[i].path %>" alt="item" />
+            <div class="item-details">
+                <span class="name"><%= cartdata[i].name %></span>
+                <span class="category"><%= cartdata[i].part_name %><%= cartdata[i].detail_id %></span>
+            </div>
+        </div>
+        <% } %>
+    </div>
+    <button class="custom-button" id="gocart">GO TO RECOMMEND</button>
+</div>
